@@ -3,6 +3,12 @@ from django.views.generic.edit import CreateView
 from .models import Post
 from django.views.generic import TemplateView
 
+class HomePageView(TemplateView):
+    template_name = 'posts/home.html'
+
+class AboutPageView(TemplateView):
+    template_name = 'posts/about.html'
+
 class PostListView(ListView):
     template_name = "posts/list.html"
     model = Post
