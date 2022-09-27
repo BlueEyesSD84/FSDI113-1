@@ -7,4 +7,5 @@
     <h3>{{ post.subtitle }}</h3>
     <strong>Created by: {{ post.author }} | On {{ post.created_on }}</strong>
     <p>{{ post.body }}</p>
+    <a href="{% url 'home' %}" class="card-btns">Home</a>
 {% endblock content %}
