@@ -13,17 +13,17 @@
 </head>
 <body>
 <nav class="navbar navbar-light bg-primary">
-<ul class="nav">
-    <a class="navbar-brand" href="{% url 'home' %}">Newspaper name here</a>
-    <li class="nav-item">
-        <a class="nav-link" href="{% url 'posts' %}">Home</a>
-        <a class="nav-link" href="{% url 'new' %}">+ New</a>
-        <a class="nav-link" href="{% url 'posts' %}">Posts</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{% url 'about' %}">About Us</a>
-    </li>
-    </ul>
+    <div class="container-fluid">
+        <div class="navbar-nav">
+            <a class="navbar-brand" href="{% url 'home' %}">San Diego Union Tribune</a>
+            <a class="nav-link" href="{% url 'home' %}">Home</a>
+            <a class="nav-link" href="{% url 'new' %}">New</a>
+            <a class="nav-link" href="{% url 'about' %}">About Us</a>
+            <a class="nav-link" href="{% url 'list' %}">Posts</a>
+            
+            
+        </div>
+    </div>        
 </nav>
     <div class="container">    
         {% block content %}

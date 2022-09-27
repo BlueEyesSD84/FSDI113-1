@@ -13,7 +13,10 @@ class Post(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.title
+        return reverse('detail', args=[self.id])
 
     def get_absolute_url(self):
-        return reverse('detail', args=[self.id])
+        return self.title
+
+
+        
