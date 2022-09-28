@@ -10,11 +10,11 @@
 <div class="card-body">
 <h5 class="card-title"><a href="{% url 'detail' post.id %}">{{ post.title }}</a></h5>
 <h6 class="card-subtitle">{{ post.category }}</h6>
-<p class="card-text">{{ post.body | truncatechars:250 }}</p>
+<p class="card-text">{{ post.body }}</p>
 
 <div class="author-div">
-<p class="card-text">AUTHOR: {{ post.author }}</p>
-<p class="card-text">DATE: {{ post.created_on }}</p>
+<p class="card-text">Author: {{ post.author }}</p>
+<p class="card-text">Date: {{ post.created_on }}</p>
 </div>
 
 <a href="{% url 'detail' post.id %}" class="card-btns">Read More</a>
