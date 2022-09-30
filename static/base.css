@@ -1,3 +1,31 @@
 h1{
     color:red;
+    text-align: center;
+}
+#id_title,
+#id_subtitle,
+#id_author,
+#id_body,
+#id_create,
+#id_edit {
+    padding: 5px;
+    margin: 5px;
+    width: 300px;
+    border-radius: 8px;
+    
+}
+.card {
+    margin-top: 10px;
+}
+.post-detail {
+    border-radius:  10px;
+    border: 1px solid black;
+}
+
+.container {
+    margin-top: 10px;
+}
+
+.dropdown-menu{
+    color: red;
 }

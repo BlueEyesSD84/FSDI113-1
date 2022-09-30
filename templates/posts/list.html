@@ -4,25 +4,21 @@
 
 {% block content %}
 <h1>Posts</h1>
-<div class="list-container">
 {% for post in post_list %}
-<div class="card">
+<div class="card" style="width: 80rem;">
 <div class="card-body">
-<h5 class="card-title"><a href="{% url 'detail' post.id %}">{{ post.title }}</a></h5>
-<h6 class="card-subtitle">{{ post.category }}</h6>
-<p class="card-text">{{ post.body }}</p>
-
-<div class="author-div">
-<p class="card-text">Author: {{ post.author }}</p>
-<p class="card-text">Date: {{ post.created_on }}</p>
+    <h5 class="card-title">{{ post.title }}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{ post.subtitle }}</h6>
+    <p class="card-text">{{ post.body | truncatechars:500 }}</p>
+        <a href="{% url 'detail' post.id %}" class="card-link">Read more...</a>
+            {% if user == post.author %}
+        <p class="author-options">
+        <a href="{% url 'edit' post.id %}"><i class="btn btn-primary bi bi-pencil"></i></a>
+        <a href="{% url 'delete' post.id %}"><i class="btn btn-danger bi bi-trash"></i></a>
+    </p>    
 </div>
-
-<a href="{% url 'detail' post.id %}" class="card-btns">Read More</a>
-<a href="{% url 'delete' post.id %}" class="card-btns">Delete</a>
-<a href="{% url 'edit' post.id %}" class="card-btns">Edit</a>
+{% endif %}
 </div>
-</div>
+<br/>
 {% endfor %}
-</div>
-
 {% endblock content %}

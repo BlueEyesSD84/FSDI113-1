@@ -10,9 +10,6 @@ class PostListView(ListView):
     template_name = "posts/list.html"
     model = Post
 
-class HomePageView(TemplateView):
-    template_name = 'posts/index.html'
-
 class PostDetailView(DetailView):
     template_name = "posts/detail.html"
     model = Post
@@ -20,7 +17,14 @@ class PostDetailView(DetailView):
 class PostCreateView(LoginRequiredMixin, CreateView):
     template_name = "posts/new.html"
     model = Post
-    fields = ["title", "subtitle", "author", "body"]
+    fields = ["title", "subtitle", "body"]
+
+    def form_valid(self, form):
+     form.instance.author = self.request.user
+     return super().form_valid(form)
+
+class HomePageView(TemplateView):
+    template_name = 'posts/index.html'
 
 class AboutPageView(TemplateView):
     template_name = 'posts/about.html'
@@ -28,7 +32,7 @@ class AboutPageView(TemplateView):
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     template_name = "posts/edit.html"
     model = Post
-    fields = ["title", "subtitle", "body", "author"]
+    fields = ["title", "subtitle", "body"]
 
     def test_func(self):
         post_obj = self.get_object()
