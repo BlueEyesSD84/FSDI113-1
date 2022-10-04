@@ -10,6 +10,32 @@ class PostListView(ListView):
     template_name = "posts/list.html"
     model = Post
 
+    def get_context_data(self, **kwargs):
+        pending_status = Status.objects.get(name="published")
+        context['post_list'] = Post.objects.filter(
+            author=self.request.user
+            ).filter(
+                status=pending_status
+            ).order_by(
+                'created_on').reverse()
+        return context
+
+
+class DraftPostListView(ListView):
+    template_name = "posts/list.html"
+    model = Post
+
+    def get_context_data(self, **kwargs):
+        pending_status = Status.objects.get(name="draft")
+        context['post_list'] = Post.objects.filter(
+            author=self.request.user
+            ).filter(
+                status=pending_status
+            ).order_by(
+                'created_on').reverse()
+        return context    
+
+
 class PostDetailView(DetailView):
     template_name = "posts/detail.html"
     model = Post
@@ -20,8 +46,8 @@ class PostCreateView(LoginRequiredMixin, CreateView):
     fields = ["title", "subtitle", "body"]
 
     def form_valid(self, form):
-     form.instance.author = self.request.user
-     return super().form_valid(form)
+        form.instance.author = self.request.user
+        return super().form_valid(form)
 
 class HomePageView(TemplateView):
     template_name = 'posts/index.html'

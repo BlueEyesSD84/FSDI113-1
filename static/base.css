@@ -10,9 +10,8 @@ h1{
 #id_edit {
     padding: 5px;
     margin: 5px;
-    width: 300px;
+    width: 100%;
     border-radius: 8px;
-    
 }
 .card {
     margin-top: 10px;
