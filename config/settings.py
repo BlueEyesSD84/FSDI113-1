@@ -25,9 +25,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-#SECRET_KEY=env.str("SECRET_KEY")
-SECRET_KEY=env('SECRET_KEY')
-
+SECRET_KEY=env.str("django-insecure","SECRET_KEY")
+DEBUG = True
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool("DEBUG", default=False)
 
@@ -140,11 +139,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
-EMAIL_BACKEND = 'django.core.mail.backends.%s.EMAIL_BACKEND' % env.str("EMAIL_BACKEND", default="smtp")
+#EMAIL_BACKEND = 'django.core.mail.backends.%s.EMAIL_BACKEND' % env.str("EMAIL_BACKEND", default="smtp")
 
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST = env.str('EMAIL_HOST')
-EMAIL_HOST_USER = env.str('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = env.str('EMAIL_HOST_PASSWORD')
-DEFAULT_FROM_EMAIL = env.str('DEFAULT_FROM_EMAIL')
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST = env.str('EMAIL_HOST')
+# EMAIL_HOST_USER = env.str('EMAIL_HOST_USER')
+# EMAIL_HOST_PASSWORD = env.str('EMAIL_HOST_PASSWORD')
+# DEFAULT_FROM_EMAIL = env.str('DEFAULT_FROM_EMAIL')
